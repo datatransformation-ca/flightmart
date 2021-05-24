@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: bookings
+    description: The booking flight data 
+    tables:
+      - name: tickets
+        columns:
+          - name: ticket_no
+            description: The ticket number
+            tests:
+              - unique
+              - not_null
+          - name: book_ref
+            description: Booking Reference number
+            tests:
+              - not_null
+          - name: passenger_id
+            description: Passenger ID
+            tests:
+              - not_null
+          - name: passenger_name
+            description: Name of the passenger
+            tests:
+              - not_null
+          - name: contact_data
+            description: The contact data. A JSON string
+            tests:
+
+models:
+  - name: dim_customer
+    columns:
+      - name: dim_customer_key
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        tests:
+          - not_null
+      - name: contact_data
+        tests:
